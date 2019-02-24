@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  gaId: "UA-117929089-1",
+  mode: "stable"
 };
