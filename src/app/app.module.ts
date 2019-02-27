@@ -22,6 +22,8 @@ import {
   MatToolbarModule
 } from "@angular/material";
 import { DocumentsService } from "./documents/documents.service";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +37,8 @@ import { DocumentsService } from "./documents/documents.service";
     MatIconModule,
     MatProgressBarModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [DocumentsService],
   bootstrap: [AppComponent]
