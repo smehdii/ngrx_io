@@ -32,6 +32,7 @@ import { Deployment } from "./shared/deployment.service";
 import { GaService } from "./shared/ga.service";
 import { LocationService } from "./shared/location.service";
 import { ReportingErrorHandler } from "./shared/reporting-error-handler";
+import { Logger } from "./shared/logger.service";
 
 // These are the hardcoded inline svg sources to be used by the `<mat-icon>` component.
 // tslint:disable: max-line-length
@@ -118,7 +119,7 @@ export const svgIconProviders = [
     DocumentService,
     { provide: ErrorHandler, useClass: ReportingErrorHandler },
     GaService,
-    // Logger,
+    Logger,
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     LocationService,

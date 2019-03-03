@@ -8,6 +8,7 @@ export class GaService {
   private previousUrl: string;
 
   constructor(@Inject(WindowToken) private window: Window) {
+    console.log("gaService Called", environment["gaId"]);
     this.ga("create", environment["gaId"], "auto");
   }
 
@@ -16,7 +17,6 @@ export class GaService {
   }
 
   sendPage(url: string) {
-    // Won't re-send if the url hasn't changed.
     if (url === this.previousUrl) {
       return;
     }

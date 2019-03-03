@@ -3,7 +3,7 @@ import { SwUpdate } from "@angular/service-worker";
 import { concat, interval, NEVER, Observable, Subject } from "rxjs";
 import { first, map, takeUntil, tap } from "rxjs/operators";
 
-// import { Logger } from "app/shared/logger.service";
+import { Logger } from "../shared/logger.service";
 
 @Injectable()
 export class SwUpdatesService implements OnDestroy {
@@ -13,7 +13,7 @@ export class SwUpdatesService implements OnDestroy {
 
   constructor(
     appRef: ApplicationRef,
-    // private logger: Logger,
+    private logger: Logger,
     private swu: SwUpdate
   ) {
     if (!swu.isEnabled) {
@@ -21,7 +21,6 @@ export class SwUpdatesService implements OnDestroy {
       return;
     }
 
-    // Periodically check for updates (after the app is stabilized).
     const appIsStable = appRef.isStable.pipe(first(v => v));
     concat(appIsStable, interval(this.checkInterval))
       .pipe(
@@ -30,7 +29,6 @@ export class SwUpdatesService implements OnDestroy {
       )
       .subscribe(() => this.swu.checkForUpdate());
 
-    // Activate available updates.
     this.swu.available
       .pipe(
         tap(evt => this.log(`Update available: ${JSON.stringify(evt)}`)),
@@ -38,7 +36,6 @@ export class SwUpdatesService implements OnDestroy {
       )
       .subscribe(() => this.swu.activateUpdate());
 
-    // Notify about activated updates.
     this.updateActivated = this.swu.activated.pipe(
       tap(evt => this.log(`Update activated: ${JSON.stringify(evt)}`)),
       map(evt => evt.current.hash),
@@ -52,6 +49,6 @@ export class SwUpdatesService implements OnDestroy {
 
   private log(message: string) {
     const timestamp = new Date().toISOString();
-    // this.logger.log(`[SwUpdates - ${timestamp}]: ${message}`);
+    this.logger.log(`[SwUpdates - ${timestamp}]: ${message}`);
   }
 }
