@@ -1,7 +1,7 @@
 import { Component, HostBinding } from "@angular/core";
 
 @Component({
-  selector: "app-root",
+  selector: "aio-root",
   templateUrl: "./app.component.html"
 })
 export class AppComponent {
@@ -18,4 +18,6 @@ export class AppComponent {
   isSideBySide = false;
   private isFetchingTimeout: any;
   private isSideNavDoc = false;
+
+  notificationDismissed() {}
 }
