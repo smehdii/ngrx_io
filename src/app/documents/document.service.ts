@@ -28,7 +28,9 @@ const FETCHING_ERROR_CONTENTS = `
   </div>
 `;
 @Injectable()
-export class DocumentsService {
+export class DocumentService {
+  private cache = new Map<string, Observable<DocumentContents>>();
+
   currentDocument: Observable<DocumentContents>;
   baseHref: string;
 

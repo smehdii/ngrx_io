@@ -20,14 +20,18 @@ import {
   MatProgressBarModule,
   MatToolbarModule
 } from "@angular/material";
-import { DocumentsService } from "./documents/documents.service";
+import { DocumentService } from "./documents/document.service";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { NotificationComponent } from "./layout/notification/notification.component";
 import { CurrentDateToken, currentDateProvider } from "./shared/current-date";
 import { WindowToken, windowProvider } from "./shared/window";
 import { SVG_ICONS, CustomIconRegistry } from "./shared/custom-icon-registry";
-import { TopMenuComponent } from './layout/top-menu/top-menu.component';
+import { TopMenuComponent } from "./layout/top-menu/top-menu.component";
+import { Deployment } from "./shared/deployment.service";
+import { GaService } from "./shared/ga.service";
+import { LocationService } from "./shared/location.service";
+import { ReportingErrorHandler } from "./shared/reporting-error-handler";
 
 // These are the hardcoded inline svg sources to be used by the `<mat-icon>` component.
 // tslint:disable: max-line-length
@@ -110,7 +114,14 @@ export const svgIconProviders = [
     })
   ],
   providers: [
-    DocumentsService,
+    Deployment,
+    DocumentService,
+    { provide: ErrorHandler, useClass: ReportingErrorHandler },
+    GaService,
+    // Logger,
+    Location,
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    LocationService,
     svgIconProviders,
     { provide: MatIconRegistry, useClass: CustomIconRegistry },
     { provide: CurrentDateToken, useFactory: currentDateProvider },

@@ -4,11 +4,6 @@ import { environment } from "../../environments/environment";
 import { WindowToken } from "./window";
 
 @Injectable()
-/**
- * Google Analytics Service - captures app behaviors and sends them to Google Analytics (GA).
- * Presupposes that GA script has been loaded from a script on the host web page.
- * Associates data with a GA "property" from the environment (`gaId`).
- */
 export class GaService {
   private previousUrl: string;
 

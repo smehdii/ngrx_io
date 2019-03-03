@@ -5,7 +5,7 @@ import { combineLatest, ConnectableObservable, Observable } from "rxjs";
 import { map, publishLast, publishReplay } from "rxjs/operators";
 
 import { LocationService } from "../shared/location.service";
-import { CONTENT_URL_PREFIX } from "../documents/documents.service";
+import { CONTENT_URL_PREFIX } from "../documents/document.service";
 
 // Import and re-export the Navigation model types
 import {
