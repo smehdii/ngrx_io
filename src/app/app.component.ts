@@ -1,11 +1,27 @@
-import { Component, HostBinding } from "@angular/core";
+import {
+  Component,
+  HostBinding,
+  ViewChild,
+  AfterViewInit
+} from "@angular/core";
+import { MatSidenav } from "@angular/material";
+
+const sideNavView = "SideNav";
 
 @Component({
-  selector: "aio-root",
+  selector: "aio-shell",
   templateUrl: "./app.component.html"
 })
-export class AppComponent {
-  title = "ngrxio";
+export class AppComponent implements AfterViewInit {
+  title = "MEHDI SIDDIK || Portfolio";
+
+  // currentDocument: DocumentContents;
+  // currentDocVersion: NavigationNode;
+  // currentNodes: CurrentNodes = {};
+  currentPath: string;
+  // docVersions: NavigationNode[];
+  dtOn = false;
+  // footerNodes: NavigationNode[];
 
   pageId: string;
   folderId: string;
@@ -19,5 +35,11 @@ export class AppComponent {
   private isFetchingTimeout: any;
   private isSideNavDoc = false;
 
+  @ViewChild(MatSidenav) sidenav: MatSidenav;
+
   notificationDismissed() {}
+
+  ngAfterViewInit() {
+    console.log("sidenav", this.sidenav);
+  }
 }

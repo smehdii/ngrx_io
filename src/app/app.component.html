@@ -65,3 +65,52 @@
     </div> -->
   </mat-toolbar-row>
 </mat-toolbar>
+
+<!-- <aio-search-results #searchResultsView *ngIf="showSearchResults" [searchResults]="searchResults | async" (resultSelected)="hideSearchResults()"></aio-search-results> -->
+
+<mat-sidenav-container
+  class="sidenav-container"
+  [class.starting]="isStarting"
+  [class.has-floating-toc]="hasFloatingToc"
+>
+  <mat-sidenav
+    [ngClass]="{ collapsed: !isSideBySide }"
+    #sidenav
+    class="sidenav"
+    [mode]="mode"
+    [opened]="isOpened"
+    (openedChange)="updateHostClasses()"
+  >
+    <!-- <aio-nav-menu *ngIf="!isSideBySide" [nodes]="topMenuNarrowNodes" [currentNode]="currentNodes?.TopBarNarrow" [isWide]="false"></aio-nav-menu> -->
+    <!-- <aio-nav-menu [nodes]="sideNavNodes" [currentNode]="currentNodes?.SideNav" [isWide]="isSideBySide"></aio-nav-menu> -->
+    <!--  -->
+    <!-- <div class="doc-version"> -->
+    <!-- <aio-select (change)="onDocVersionChange($event.index)" [options]="docVersions" [selected]="currentDocVersion"></aio-select> -->
+    <!-- </div> -->
+  </mat-sidenav>
+
+  <!-- <section class="sidenav-content" [id]="pageId" role="main"> -->
+  <!-- <aio-mode-banner [mode]="deployment.mode" [version]="versionInfo"></aio-mode-banner> -->
+  <!-- <aio-doc-viewer [class.no-animations]="isStarting" -->
+  <!-- [doc]="currentDocument" -->
+  <!-- (docReady)="onDocReady()" -->
+  <!-- (docRemoved)="onDocRemoved()" -->
+  <!-- (docInserted)="onDocInserted()" -->
+  <!-- (docRendered)="onDocRendered()"> -->
+  <!-- </aio-doc-viewer> -->
+  <!-- <aio-dt [on]="dtOn" [(doc)]="currentDocument"></aio-dt> -->
+  <!-- </section> -->
+</mat-sidenav-container>
+
+<div
+  *ngIf="hasFloatingToc"
+  class="toc-container no-print"
+  [style.max-height.px]="tocMaxHeight"
+  (mousewheel)="restrainScrolling($event)"
+>
+  <!-- <aio-lazy-ce selector="aio-toc"></aio-lazy-ce> -->
+</div>
+
+<footer class="no-print">
+  <!-- <aio-footer [nodes]="footerNodes" [versionInfo]="versionInfo" ></aio-footer> -->
+</footer>
