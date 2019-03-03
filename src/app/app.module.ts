@@ -27,6 +27,7 @@ import { NotificationComponent } from "./layout/notification/notification.compon
 import { CurrentDateToken, currentDateProvider } from "./shared/current-date";
 import { WindowToken, windowProvider } from "./shared/window";
 import { SVG_ICONS, CustomIconRegistry } from "./shared/custom-icon-registry";
+import { TopMenuComponent } from './layout/top-menu/top-menu.component';
 
 // These are the hardcoded inline svg sources to be used by the `<mat-icon>` component.
 // tslint:disable: max-line-length
@@ -93,7 +94,7 @@ export const svgIconProviders = [
 // tslint:enable: max-line-length
 
 @NgModule({
-  declarations: [AppComponent, NotificationComponent],
+  declarations: [AppComponent, NotificationComponent, TopMenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
