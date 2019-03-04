@@ -33,6 +33,8 @@ import { GaService } from "./shared/ga.service";
 import { LocationService } from "./shared/location.service";
 import { ReportingErrorHandler } from "./shared/reporting-error-handler";
 import { Logger } from "./shared/logger.service";
+import { SwUpdatesModule } from "./sw-updates/sw-updates.module";
+import { NavigationService } from "./navigation/navigation.service";
 
 // These are the hardcoded inline svg sources to be used by the `<mat-icon>` component.
 // tslint:disable: max-line-length
@@ -112,7 +114,8 @@ export const svgIconProviders = [
     MatToolbarModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production
-    })
+    }),
+    SwUpdatesModule
   ],
   providers: [
     Deployment,
@@ -123,6 +126,7 @@ export const svgIconProviders = [
     Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     LocationService,
+    NavigationService,
     svgIconProviders,
     { provide: MatIconRegistry, useClass: CustomIconRegistry },
     { provide: CurrentDateToken, useFactory: currentDateProvider },

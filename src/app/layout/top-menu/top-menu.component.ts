@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-// import { NavigationNode } from "app/navigation/navigation.service";
+import { NavigationNode } from "../../navigation/navigation.service";
 
 @Component({
   selector: "aio-top-menu",
@@ -14,5 +14,5 @@ import { Component, Input } from "@angular/core";
   `
 })
 export class TopMenuComponent {
-  // @Input() nodes: NavigationNode[];
+  @Input() nodes: NavigationNode[];
 }
